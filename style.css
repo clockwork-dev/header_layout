@@ -11,6 +11,13 @@ header img{
     width: 64px;
 
 }
+.burger-menu{
+    display: none;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .container-header {
     height: inherit;
     display: flex;
@@ -18,11 +25,11 @@ header img{
     justify-content: space-between;
     align-items: center;
     color: #3D3B40;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
 }
-h1 {
-    margin-right: auto;
-    margin-left: 5px;
+.container-header h1 {
+    margin: 0px auto 0px 5px;
 }
 .container-header a {
     text-decoration: none;
@@ -59,17 +66,25 @@ h1 {
 
 }
 
-@media (min-width: 992px){
+@media (min-width: 1100px){
     .main{
         grid-area: main;
         padding: 30px 15px;
         display: grid;
         grid-template: 1fr / minmax(250px, 0.1fr) minmax(auto, 1fr);
     }
+    
+    .sidebar{
+        grid-column: 1 / 2;
+        padding: 30px;
+        color: #3D3B40;
+        font-size: 30px;
+        background-color: #BFCFE7;
+    }
 }
 
 .sidebar {
-    grid-column: 1 / 2;
+    display: flex;
     background-color: #BFCFE7;
     padding: 30px;
     color: #3D3B40;
@@ -84,7 +99,8 @@ h1 {
 }
 
 .sidebar li {
-    margin: 0px 0px 15px 0px;
+    list-style: none;
+    margin: 0px 0px 25px 0px;
     transition: transform 0.3s ease-in-out;
 }
 .sidebar li:hover{
@@ -92,7 +108,7 @@ h1 {
 }
 .content {
     grid-column: 2 / 3;
-    padding: 0px 0px 0px 30px;
+    padding: 0px 15px 0px 15px;
     color: #BFCFE7;
 }
 
@@ -112,19 +128,18 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.gallery-item{
+.gallery-item {
+    overflow: hidden; /* Добавляем свойство overflow для обрезки изображения */
     position: relative;
-    padding: 0px 0px 85% 0px;
+    padding-top: 10px; /* 1:1 соотношение сторон для квадратных изображений */
 }
 
 .gallery-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 
 
 .products-items {
@@ -160,17 +175,12 @@ h1 {
 
 .product-image {
     position: relative;
-    padding: 0px 0px 90% 0px;
+    overflow: hiden;
     margin: 0px 0px 20px 0px;
 }
 
 .product-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .product-name {
@@ -190,6 +200,46 @@ h1 {
     grid-column: 2/3;
 }
 
-.footer-text: {
+.footer-text {
     grid-column: 3/4;
+}
+
+@media (max-width: 915px){
+    .container-header h1 {
+        display: none;
+    }
+}
+
+@media (max-width: 790px){
+    .container-header  {
+        display: none;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+
+    .burger-nav-list {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 25px;
+        left: 0;
+        background-color: #BFCFE7;
+        width: 100%;
+    }
+
+    .burger-nav-list.show {
+        display: flex; 
+    }
+
+    .burger-menu {
+        display: block;
+    }
+    
+    .burger-menu a {
+        text-decoration: none;
+        color: #3D3B40
+        
+    }
 }
